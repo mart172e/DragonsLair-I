@@ -12,8 +12,16 @@ namespace TournamentLib
         }
 
         public Match GetMatch(string teamName1, string teamName2)
-        {
-            // TODO: Implement this method
+        
+        //{
+        //    bool matchesFinished = true;
+        //    int numberOfRounds = currentTournament.GetNumberOfRounds();
+        //    for (int round = 0; round < numberOfRounds; round++)
+        //    {
+        //        Round currentRound = currentTournament.GetRound(round);
+        //        if (currentRound.IsMatchesFinished() == false)
+        //            matchesFinished = false;
+        //    }
             return null;
         }
 
