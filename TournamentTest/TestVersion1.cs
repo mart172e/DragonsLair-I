@@ -59,4 +59,4 @@ namespace TournamentTest
             Assert.AreEqual(true, matchesFinished);
         }
     }
-
+}
