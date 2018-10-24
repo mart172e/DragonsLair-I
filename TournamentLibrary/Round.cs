@@ -13,19 +13,28 @@ namespace TournamentLib
 
         public Match GetMatch(string teamName1, string teamName2)
         {
-            // TODO: Implement this method
+            /* TODO: Implement this method
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+            */
             return null;
         }
 
         public bool IsMatchesFinished()
         {
-            // TODO: Implement this method
+            /* TODO: Implement this method
+            bool
+            */
             return false;
         }
 
         public List<Team> GetWinningTeams()
         {
-            // TODO: Implement this method
+            /* TODO: Implement this method
+            GetWinningTeams()
+            */
             return null;
         }
 
