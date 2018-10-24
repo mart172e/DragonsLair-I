@@ -16,17 +16,20 @@ namespace TournamentLib
             /* TODO: Implement this method
             for (int i = 0; i < length; i++)
             {
-
             }
+            if
+            teamName1 = firstopponent
             */
             return null;
         }
 
         public bool IsMatchesFinished()
         {
-            /* TODO: Implement this method
-            bool
-            */
+            /* 
+             * TODO: Implement this method
+             * bool
+             *if matches.(i) get winner
+             */
             return false;
         }
 
@@ -34,13 +37,17 @@ namespace TournamentLib
         {
             /* TODO: Implement this method
             GetWinningTeams()
+            foreach
             */
             return null;
         }
 
         public List<Team> GetLosingTeams()
         {
-            // TODO: Implement this method
+            /* TODO: Implement this method
+            GetWinningTeams()
+            foreach
+            */
             return null;
         }
     }
