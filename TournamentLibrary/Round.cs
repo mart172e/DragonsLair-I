@@ -28,7 +28,14 @@ namespace TournamentLib
             /* TODO: Implement this method
             bool
             */
-            return false;
+            for (int i = 0; i < matches.Count; i++)
+            {
+                if (matches[i].Winner == null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public List<Team> GetWinningTeams()
@@ -36,13 +43,32 @@ namespace TournamentLib
             /* TODO: Implement this method
             GetWinningTeams()
             */
-            return null;
+            List<Team> winners = new List<Team>();
+
+            for (int i = 0; i < matches.Count; i++)
+            {
+                winners.Add(matches[i].Winner);
+            }
+            return winners;
         }
 
         public List<Team> GetLosingTeams()
         {
             // TODO: Implement this method
-            return null;
+            List<Team> loosers = new List<Team>();
+
+            foreach (Match m in matches)
+            {
+                if(m.Winner == m.FirstOpponent)
+                {
+                    loosers.Add(m.SecondOpponent);
+                }
+                else
+                {
+                    loosers.Add(m.FirstOpponent);
+                }
+            }
+            return loosers;
         }
     }
 }
