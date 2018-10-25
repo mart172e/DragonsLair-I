@@ -13,23 +13,21 @@ namespace TournamentLib
 
         public Match GetMatch(string teamName1, string teamName2)
         {
-            /* TODO: Implement this method
-            for (int i = 0; i < length; i++)
+            foreach (Match m in matches)
             {
+                if (m.FirstOpponent.Name == teamName1 && m.SecondOpponent.Name == teamName2)
+                {
+                    return m;
+                }
             }
-            if
-            teamName1 = firstopponent
-            */
             return null;
         }
 
         public bool IsMatchesFinished()
         {
-            /* 
-             * TODO: Implement this method
-             * bool
-             *if matches.(i) get winner
-             */
+            /* TODO: Implement this method
+            bool
+            */
             return false;
         }
 
@@ -37,17 +35,13 @@ namespace TournamentLib
         {
             /* TODO: Implement this method
             GetWinningTeams()
-            foreach
             */
             return null;
         }
 
         public List<Team> GetLosingTeams()
         {
-            /* TODO: Implement this method
-            GetWinningTeams()
-            foreach
-            */
+            // TODO: Implement this method
             return null;
         }
     }
