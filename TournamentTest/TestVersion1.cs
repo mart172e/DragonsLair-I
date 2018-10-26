@@ -16,6 +16,7 @@ namespace TournamentTest
             currentTournament.SetupTestRounds();
         }
 
+
         [TestMethod]
         public void TournamentHasEvenNumberOfTeams()
         {
