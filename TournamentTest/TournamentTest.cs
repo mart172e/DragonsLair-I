@@ -13,7 +13,9 @@ namespace TournamentTest
         public void SetupForTest()
         {
             currentTournament = new Tournament("Vinter Turnering");
+            currentTournament.SetupTestRounds();
         }
+
 
         [TestMethod]
         public void TournamentHasEvenNumberOfTeams()
