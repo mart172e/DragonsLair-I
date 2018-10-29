@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TournamentLib
 {
@@ -69,6 +70,24 @@ namespace TournamentLib
                 }
             }
             return loosers;
+        }
+
+        public Team GetFreeRider()
+        {
+            return FreeRider;
+        }
+
+        private Team freeRider;
+        public Team FreeRider
+        {
+            get => freeRider;
+            set { freeRider = value; }
+        }
+        private Team setFreeRider;
+
+        public void SetFreeRider(Team newFreeRider)
+        {
+            setFreeRider = newFreeRider;
         }
     }
 }
