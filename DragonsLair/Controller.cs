@@ -51,11 +51,12 @@ namespace DragonsLair
                         teams.Add(lastRound.FreeRider);
                     }
                 }
-                if (teams.Count>=2)
+                if (teams.Count >= 2)
                 {
+                    scramble = teams;
                     Round newRound = new Round();
-                    
-                    if (numberOfRounds%2 != 0)
+
+                    if (numberOfRounds % 2 != 0)
                     {
                         if (numberOfRounds > 0)
                         {
@@ -67,28 +68,41 @@ namespace DragonsLair
                         }
 
                         int x = 0;
-                        scramble = teams;
                         do
                         {
                             newFreeRider = scramble[x++];
                         }
                         while (newFreeRider == oldFreeRider);
-                    
-                        newRound.SetFreeRider(newFreeRider); 
 
+                        newRound.SetFreeRider(newFreeRider);
                         teams.Remove(newFreeRider);
                     }
+                    for (int i = 0; i < scramble.Count; i = i + 2)
+                    {
+                        Match match = new Match();
+                        match.FirstOpponent = scramble[i];
+                        match.SecondOpponent = scramble[i + 1]; //test virker ikke fix bounds out
+                        newRound.AddMatch(match);
+                    }
+                    t.AddRound(newRound);
+                    // Vis kampe i ny runde (se wireframe) Sprint 2 dag 1
                 }
                 else
                 {
-
+                    throw new Exception("Tournament is finished");
                 }
             }
             else
             {
-
+                throw new Exception("Round not finished");
             }
         }
+
+        public TournamentRepo GetTournamentRepository()
+        {
+            return tournamentRepository;
+        }
+
         public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
         {
         }
