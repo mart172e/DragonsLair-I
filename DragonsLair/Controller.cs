@@ -16,7 +16,6 @@ namespace DragonsLair
 
         public void ScheduleNewRound(string tournamentName, bool printNewMatches = true)
         {
-            
             Tournament t = tournamentRepository.GetTournament(tournamentName);
             int numberOfRounds = t.GetNumberOfRounds();
 
@@ -105,6 +104,15 @@ namespace DragonsLair
 
         public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
         {
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            Round r = t.GetRound(roundNumber);
+            Match m = r.GetMatch(winningTeam);
+
+            if ()
+            {
+
+            }
+
         }
 
     }
