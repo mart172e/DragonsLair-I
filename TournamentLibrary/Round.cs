@@ -89,5 +89,19 @@ namespace TournamentLib
         {
             setFreeRider = newFreeRider;
         }
+
+        public Match GetMatch(string team)
+        {
+            Match result = null;
+
+            foreach (Match match in matches)
+            {
+                if (match.Winner.Equals(team))
+                {
+                    result = match;
+                }
+            }
+            return result;
+        }
     }
 }

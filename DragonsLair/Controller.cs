@@ -24,7 +24,7 @@ namespace DragonsLair
             List<Team> teams;
             Team oldFreeRider;
             Team newFreeRider;
-            List<Team> scramble;
+            List<Team> scramble = new List<Team>();
 
             if (numberOfRounds == 0)
             {
@@ -52,7 +52,7 @@ namespace DragonsLair
                 }
                 if (teams.Count >= 2)
                 {
-                    scramble = teams;
+                    scramble = teams.ToList();
                     Round newRound = new Round();
 
                     if (numberOfRounds % 2 != 0)
@@ -97,6 +97,18 @@ namespace DragonsLair
             }
         }
 
+        public void SaveMatch(string tournamentName, int round, string winner)
+        {
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            Round r = t.GetRound(round);
+            Match m = r.GetMatch(winner);
+
+            if ()
+            {
+
+            }
+        }
+
         public TournamentRepo GetTournamentRepository()
         {
             return tournamentRepository;
@@ -104,14 +116,6 @@ namespace DragonsLair
 
         public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
         {
-            Tournament t = tournamentRepository.GetTournament(tournamentName);
-            Round r = t.GetRound(roundNumber);
-            Match m = r.GetMatch(winningTeam);
-
-            if ()
-            {
-
-            }
 
         }
 
