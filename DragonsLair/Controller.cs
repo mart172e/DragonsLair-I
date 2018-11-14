@@ -8,6 +8,11 @@ namespace DragonsLair
     public class Controller
     {
         private TournamentRepo tournamentRepository = new TournamentRepo();
+        private List<Team> Scramble(List<Team> teams)
+        {
+            return teams;
+        }
+        
        
         public void ShowScore(string tournamentName)
         {
@@ -21,10 +26,10 @@ namespace DragonsLair
 
             Round lastRound;
             bool isRoundFinished;
-            List<Team> teams;
+            List<Team> teams = new List<Team>();
             Team oldFreeRider;
-            Team newFreeRider;
-            List<Team> scramble = new List<Team>();
+            Team newFreeRider = null;
+            List<Team> scramble;
 
             if (numberOfRounds == 0)
             {
@@ -36,7 +41,7 @@ namespace DragonsLair
                 lastRound = t.GetRound(numberOfRounds - 1);
                 isRoundFinished = lastRound.IsMatchesFinished();
             }
-            if (isRoundFinished)
+            if (isRoundFinished == true)
             {
                 if (lastRound == null)
                 {
@@ -50,16 +55,16 @@ namespace DragonsLair
                         teams.Add(lastRound.FreeRider);
                     }
                 }
-                if (teams.Count >= 2)
+                if (teams.Count > 1)
                 {
                     scramble = teams.ToList();
                     Round newRound = new Round();
 
-                    if (numberOfRounds % 2 != 0)
+                    if (scramble.Count % 2 != 0)
                     {
                         if (numberOfRounds > 0)
                         {
-                            oldFreeRider = lastRound.GetFreeRider();
+                            oldFreeRider = lastRound.FreeRider;
                         }
                         else
                         {
@@ -67,14 +72,20 @@ namespace DragonsLair
                         }
 
                         int x = 0;
-                        do
+                        /*do
                         {
                             newFreeRider = scramble[x++];
                         }
-                        while (newFreeRider == oldFreeRider);
+                        */
 
-                        newRound.SetFreeRider(newFreeRider);
-                        teams.Remove(newFreeRider);
+                        while (newFreeRider == oldFreeRider)
+                        {
+                            newFreeRider = scramble[x];
+                            x++;
+                        }
+
+                        newRound.FreeRider =newFreeRider;
+                        scramble.Remove(newFreeRider);
                     }
                     for (int i = 0; i < scramble.Count; i = i + 2)
                     {
@@ -96,16 +107,21 @@ namespace DragonsLair
                 throw new Exception("Round not finished");
             }
         }
-
         public void SaveMatch(string tournamentName, int round, string winner)
         {
             Tournament t = tournamentRepository.GetTournament(tournamentName);
             Round r = t.GetRound(round);
             Match m = r.GetMatch(winner);
 
-            if ()
+            if(m!= null && m.Winner == null)
             {
-
+                Team w = t.GetTeam(winner);
+                Console.WriteLine("Kampen mellem "+ m.FirstOpponent +" og "+ m.SecondOpponent +" i runde 2 i turneringen "+ tournamentName +" er nu afviklet. Vinderen blev "+ winner +".");
+                m.Winner = w;
+            }
+            else
+            {
+                Console.WriteLine("indtastede Hold, kan ikke være vinder i denne runde, da holdet enten ikke deltager i runden eller kampen allerede er registreret med en vinder.");
             }
         }
 
@@ -113,11 +129,5 @@ namespace DragonsLair
         {
             return tournamentRepository;
         }
-
-        public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
-        {
-
-        }
-
     }
 }

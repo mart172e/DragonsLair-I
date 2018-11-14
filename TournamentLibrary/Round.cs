@@ -16,10 +16,15 @@ namespace TournamentLib
         {
             foreach (Match m in matches)
             {
+                Match result = null;
+                {
                 if (m.FirstOpponent.Name == teamName1 && m.SecondOpponent.Name == teamName2)
                 {
-                    return m;
+                    result = m;
                 }
+
+                }
+
             }
             return null;
         }
@@ -72,22 +77,11 @@ namespace TournamentLib
             return loosers;
         }
 
-        public Team GetFreeRider()
-        {
-            return FreeRider;
-        }
-
         private Team freeRider;
         public Team FreeRider
         {
             get => freeRider;
             set { freeRider = value; }
-        }
-        private Team setFreeRider;
-
-        public void SetFreeRider(Team newFreeRider)
-        {
-            setFreeRider = newFreeRider;
         }
 
         public Match GetMatch(string team)
@@ -96,7 +90,7 @@ namespace TournamentLib
 
             foreach (Match match in matches)
             {
-                if (match.Winner.Equals(team))
+                if (match.FirstOpponent.Name.Equals(team) || match.SecondOpponent.Name.Equals(team))
                 {
                     result = match;
                 }

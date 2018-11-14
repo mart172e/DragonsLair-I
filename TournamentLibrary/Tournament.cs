@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TournamentLib 
 {
@@ -6,9 +7,21 @@ namespace TournamentLib
     {
         private List<Team> teams = new List<Team>();
         private List<Round> rounds = new List<Round>();
-
         public string Name { get; private set; }
 
+        public Team GetTeam(string teamWinner)
+        {
+            Team result = null;
+            
+            foreach (Team teamname in teams)
+            {
+                if (teamname.Name.Equals(teamWinner))
+                {
+                    result = teamname;
+                }
+            }
+            return result;
+        }
         public Tournament(string tournamentName)
         {
             Name = tournamentName;
@@ -132,5 +145,6 @@ namespace TournamentLib
 
             rounds.Add(round3);
         }
+
     }
 }
